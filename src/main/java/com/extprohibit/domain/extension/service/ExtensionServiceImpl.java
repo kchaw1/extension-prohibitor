@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ExtensionServiceImpl implements ExtensionService{
 
-    private final int MAX_CUSTOM_NUMBER_COUNT = 5;
+    private final int MAX_CUSTOM_NUMBER_COUNT = 200;
     private final ExtentionRepository extentionRepository;
     private final CodeService codeService;
 
