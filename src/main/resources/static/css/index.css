@@ -1,0 +1,68 @@
+.title {
+    width: 10%;
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.basic-ext-container,
+.custom-ext-container {
+    margin-bottom: 10px;
+}
+
+.basic-ext-list {
+    width: 80%;
+    display: inline-block;
+}
+
+.custom-ext-list {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 80%;
+    height: 300px;
+    display: inline-block;
+}
+
+.basic-ext {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.custom-ext {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    display:inline-block;
+    margin: 10px;
+    padding: 10px;
+    width: 50px;
+    height: 10px;
+    line-height: 13px;
+}
+
+.btn-custom-add {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #ddd;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-custom-remove {
+    position: absolute;
+    margin-left: 2px;
+    top: 33%;
+    right: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+

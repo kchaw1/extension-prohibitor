@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.extprohibit.global.infra.ExtensionMapper">
+
+    <select id="findBasicExtensions" resultMap="basicExtension">
+        select *
+        from EXTENSION_PROHIBIT_BASIC
+    </select>
+
+    <select id="findDuplicateBasicExtension" resultType="int">
+        select count(*)
+        from EXTENSION_PROHIBIT_BASIC
+        where code_name = #{basic.codeName}
+    </select>
+
+    <insert id="saveBasicExtension">
+        insert into EXTENSION_PROHIBIT_BASIC (code_name)
+        values ( #{basic.codeName} )
+    </insert>
+
+    <delete id="removeBasicExtension">
+        delete from EXTENSION_PROHIBIT_BASIC
+        where code_name = #{basic.codeName}
+    </delete>
+
+    <select id="findCustomExtensionCount" resultType="int">
+        select count(*)
+        from EXTENSION_PROHIBIT_CUSTOM
+    </select>
+
+    <select id="findDuplicateCustomExtension" resultType="int">
+        select count(*)
+        from EXTENSION_PROHIBIT_CUSTOM
+        where extension = #{custom.extension}
+    </select>
+
+    <select id="findCustomExtensions" resultMap="customExtension">
+        select *
+        from EXTENSION_PROHIBIT_CUSTOM
+        order by orders
+    </select>
+
+    <insert id="saveCustomExtension">
+        <selectKey resultType="int" keyProperty="maxOrder" order="BEFORE">
+            SELECT IFNULL(MAX(orders)+1, 1) FROM EXTENSION_PROHIBIT_CUSTOM
+        </selectKey>
+        insert into EXTENSION_PROHIBIT_CUSTOM (extension, orders)
+        values ( #{custom.extension}, #{maxOrder} )
+    </insert>
+
+    <delete id="removeCustomExtension">
+        delete from EXTENSION_PROHIBIT_CUSTOM
+        where extension = #{custom.extension}
+    </delete>
+
+    <resultMap id="basicExtension" type="com.extprohibit.global.vo.BasicExtension" />
+    <resultMap id="customExtension" type="com.extprohibit.global.vo.CustomExtension" />
+</mapper>
